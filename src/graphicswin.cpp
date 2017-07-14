@@ -5,6 +5,7 @@
 // Copyright 2008-2013 Jonathan Westhues.
 //-----------------------------------------------------------------------------
 #include "solvespace.h"
+#include "imgui.h"
 
 #define mView (&GraphicsWindow::MenuView)
 #define mEdit (&GraphicsWindow::MenuEdit)
@@ -203,6 +204,7 @@ std::string SolveSpace::MakeAcceleratorLabel(int accel) {
 }
 
 void GraphicsWindow::Init() {
+    ImGuiIO& io = ImGui::GetIO();
     canvas = CreateRenderer();
     if(canvas) {
         persistentCanvas = canvas->CreateBatch();

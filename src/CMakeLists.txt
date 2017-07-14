@@ -205,6 +205,7 @@ add_library(solvespace-core STATIC
 
 target_link_libraries(solvespace-core
     dxfrw
+    imgui
     ${util_LIBRARIES}
     ${ZLIB_LIBRARY}
     ${PNG_LIBRARY}

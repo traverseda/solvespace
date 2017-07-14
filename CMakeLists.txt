@@ -98,6 +98,19 @@ endif()
 
 message(STATUS "Using in-tree libdxfrw")
 add_subdirectory(extlib/libdxfrw)
+set(IMGUI_DIR ${CMAKE_SOURCE_DIR}/extlib/imgui)
+include_directories(${IMGUI_DIR})
+set(imgui_HEADERS
+    ${IMGUI_DIR}/imgui.h
+)
+set(imgui_SOURCES
+    ${IMGUI_DIR}/imgui.cpp
+    ${IMGUI_DIR}/imgui_draw.cpp
+)
+add_library(imgui STATIC
+    ${imgui_SOURCES}
+    ${imgui_HEADERS}
+)
 
 if(WIN32)
     include(FindVendoredPackage)
