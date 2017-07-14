@@ -5,6 +5,7 @@
 //-----------------------------------------------------------------------------
 #include "solvespace.h"
 #include "gl3shader.h"
+#include "imgui.h"
 
 namespace SolveSpace {
 
@@ -121,6 +122,7 @@ public:
 
     Stroke *SelectStroke(hStroke hcs);
     Fill *SelectFill(hFill hcf);
+    void ImGui(ImGuiIO io);
     void SelectMask(FillPattern pattern);
     void SelectTexture(std::shared_ptr<const Pixmap> pm);
     void DoFatLineEndcap(const Vector &p, const Vector &u, const Vector &v);
@@ -205,6 +207,9 @@ Canvas::Stroke *OpenGl2Renderer::SelectStroke(hStroke hcs) {
     current.fill   = NULL;
     current.texture.reset();
     return stroke;
+}
+
+void OpenGl2Renderer::ImGui(ImGuiIO io) {
 }
 
 void OpenGl2Renderer::SelectMask(FillPattern pattern) {

@@ -204,7 +204,6 @@ std::string SolveSpace::MakeAcceleratorLabel(int accel) {
 }
 
 void GraphicsWindow::Init() {
-    ImGuiIO& io = ImGui::GetIO();
     canvas = CreateRenderer();
     if(canvas) {
         persistentCanvas = canvas->CreateBatch();
@@ -240,6 +239,22 @@ void GraphicsWindow::Init() {
 
     showSnapGrid = false;
     context.active = false;
+    int x, y;
+    GetGraphicsWindowSize(&x, &y);
+    //io.DisplaySize.x = x; //Well that didn't work
+    //io.DisplaySize.y = y;
+
+    ImGuiIO& io = ImGui::GetIO();
+    io.DisplaySize.x = 1920.0f;
+    io.DisplaySize.y = 1280.0f;
+    io.IniFilename = "imgui.ini";
+    io.RenderDrawListsFn = NULL;
+    //io.RenderDrawListsFn = my_render_function;  // Setup a render function, or set to NULL and call GetDrawData() after Render() to access the render data.
+    // There is a default font so you don't need to care about choosing a font yet
+    unsigned char* pixels;
+    int width, height;
+    io.Fonts->GetTexDataAsRGBA32(&pixels, &width, &height);
+    ImGui::NewFrame();
 
     // Do this last, so that all the menus get updated correctly.
     ClearSuper();

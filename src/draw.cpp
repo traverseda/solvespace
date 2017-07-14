@@ -6,6 +6,7 @@
 // Copyright 2008-2013 Jonathan Westhues.
 //-----------------------------------------------------------------------------
 #include "solvespace.h"
+#include "imgui.h"
 
 bool GraphicsWindow::Selection::Equals(Selection *b) {
     if(entity.v     != b->entity.v)     return false;
@@ -857,6 +858,9 @@ void GraphicsWindow::Paint() {
 
     UiCanvas uiCanvas = {};
     uiCanvas.canvas = canvas;
+    ImGui::Text("Hello, world!");
+    ImGui::Render();
+    ImGui::NewFrame();
 
     // If a marquee selection is in progress, then draw the selection
     // rectangle, as an outline and a transparent fill.
